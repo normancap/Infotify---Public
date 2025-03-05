@@ -1,3 +1,6 @@
 #ingnora carpetas build y bin
+
 **/bin/
 **/build/
+
+/cliente/media/*.mp3
