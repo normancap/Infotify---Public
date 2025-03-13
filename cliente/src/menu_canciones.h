@@ -9,7 +9,7 @@
 #define MENU_CANCIONES_H_
 
   #include <stdlib.h>
-  #include "header_common.h"
+  #include "common.h"
 
   #define ERROR -1
 

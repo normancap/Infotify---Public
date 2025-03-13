@@ -24,9 +24,6 @@ int obtener_filtros(int *criterio, char *filtro){
   return value;
 }
 
-void separador(){
-    printf("\n---------------------------------------------\n\n");
-}
 void mostrar_encabezado(){
   printf("\n%-4s %-27s %-27s %-27s %-25s %-5s\n", "ID", "Cancion", "Artista", "Album", "Genero", "Anio");
   printf("--------------------------------------------------------------------------------------------------------------------------\n");
@@ -176,7 +173,7 @@ void menu_canciones(int socket)
             printf("3.Reproducir cancion\n");
             printf("4.Salir\n\n");
             printf("Seleccione: ");
-            scanf("%d", &opcion);
+            opcion = pedir_opcion();
             separador();
             break;
         case 1: comando_listar(socket);

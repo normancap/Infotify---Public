@@ -14,5 +14,6 @@
 
   #define SALIR "salir { }"
 
+  int pedir_opcion();
   void separador();
 #endif

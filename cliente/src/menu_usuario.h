@@ -8,7 +8,8 @@
 #ifndef MENU_USUARIO_H_
 #define MENU_USUARIO_H_
 
-#include "header_common.h"
+#include "common.h"
+#include <stdlib.h>
 
 #define FIN 2
 #define SESION_OK 1
