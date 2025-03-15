@@ -9,13 +9,13 @@
 
 int obtener_filtros(int *criterio, char *filtro){
   int value = ERROR;
-  printf("1.Filtrar por artista\n2.Filtrar por genero\n\nSeleccione: ");
-  scanf("%d", criterio);
-  getchar(); // Limpiamos el buffer para evitar que fgets no tome el valor
+  printf("\n1.Filtrar por artista\n2.Filtrar por genero\n\nSeleccione: ");
+  *criterio = pedir_opcion();
+
   if(*criterio == 1 || *criterio == 2){
-    printf("Ingrese el filtro: ");
+    printf("\nIngrese el filtro: ");
     fgets(filtro, 40, stdin);
-    filtro[strlen(filtro)-1] = '\0';
+    filtro[strcspn(filtro, "\n")] = '\0';
     value = OK;
   }else {
     printf("\nIngrese una opcino valida\n");
@@ -102,6 +102,7 @@ void comando_reproducir(int socket){
 
     }else printf("Error al abrir %s\n", ruta_cancion);
   }else printf("No se encontro cancion en servidor\n");
+  separador();
 }
 
 void comando_filtrar(int socket){
@@ -124,7 +125,6 @@ void comando_filtrar(int socket){
         if(value>0){
           printf("%s",buffer2);
           memset(buffer2, 0, BUFFER_LIST);
-          separador();
         }
       }else{
         printf("Hubo un error en recibir el buffer1\n");
@@ -133,6 +133,8 @@ void comando_filtrar(int socket){
       }
     }
   }
+  separador();
+
 }
 
 void comando_listar(int socket){
@@ -149,7 +151,6 @@ void comando_listar(int socket){
       value = recv(socket, buffer2, leidos, 0);
       if(value>0){
         printf("%s", buffer2);
-        separador();
         memset(buffer2, 0, BUFFER_LIST);
       }else printf("Error en recibir datos del buffer2\n");
     }else{
@@ -158,6 +159,7 @@ void comando_listar(int socket){
       final = 1;
     }
   }
+  separador();
 }
 
 void menu_canciones(int socket)
@@ -174,7 +176,6 @@ void menu_canciones(int socket)
             printf("4.Salir\n\n");
             printf("Seleccione: ");
             opcion = pedir_opcion();
-            separador();
             break;
         case 1: comando_listar(socket);
             opcion = 0;
@@ -191,6 +192,7 @@ void menu_canciones(int socket)
             break;
         default:
             printf("Ingrese una opcion valida\n");
+            separador();
             opcion = 0;
             break;
         }

@@ -1,3 +1,4 @@
+#include "common.h"
 #include <stdlib.h>
 
 void separador(){
@@ -12,8 +13,10 @@ int pedir_opcion(){
   if(strchr(opcionV,'\n')){
     opcionV[strcspn(opcionV, "\n")] = '\0';
   } else {
-    while ((c = getchar()) != '\n' && c != EOF);
+    c = getchar();
+    while ( c != '\n' && c != EOF) c = getchar();
   }
   value = atoi(opcionV);
+  if(value == 0) value = -1;
   return value;
 }

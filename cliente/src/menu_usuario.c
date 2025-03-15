@@ -32,7 +32,7 @@ int menu_usuario(int socket){
 }
 
 void pedir_user_pass(User *datos){ // No se me ocurre que error podria haber al pedir datos
-  printf("Ingrese nombre de usuario: ");
+  printf("\nIngrese nombre de usuario: ");
   scanf("%s", datos->username);        // se puede usar fgets
   printf("Ingrese su password: ");
   scanf("%s", datos->password);        // se puede usar fgets
@@ -54,7 +54,6 @@ int comando_iniciar_sesion(int socket){
   int value;
   User datos;
   char buffer[BUFFER_SIZE] = {0};
-  printf("HOlaaaa\n");
 
   pedir_user_pass(&datos);
   sprintf(buffer, "%s {%s,%s}", INICIAR_SESION, datos.username, datos.password);
